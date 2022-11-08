@@ -1,6 +1,10 @@
 # Cache-Simulator
 
+## It is a subject Object.
 
+To to complete the homework, so we build this project...
+
+Orz......
 
 ## Getting started
 
