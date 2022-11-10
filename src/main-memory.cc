@@ -1,5 +1,7 @@
 #include "main-memory.h"
 
+#include <iostream>
+
 MainMemory::MainMemory ()
 {
   m_map.clear ();
@@ -22,6 +24,7 @@ MainMemory::WriteBack (Address addr)
 {
   // It should be Shared.
   m_map[addr] = S;
+  std::cout << m_map[addr] <<std::endl;
 }
 
 // For Exclusive change to Modified.
@@ -35,4 +38,13 @@ void
 MainMemory::Write (Address addr)
 {
   m_map[addr] = S;
+}
+
+MesiState_t
+MainMemory::GetState (Address addr)
+{
+  if (m_map.find (addr) == m_map.end()) {
+    m_map[addr] = I;
+  }
+  return m_map [addr];
 }

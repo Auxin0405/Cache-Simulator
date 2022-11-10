@@ -16,6 +16,8 @@ public:
   void Invalid (Address addr);
 
   void WriteBack (Address addr);
+
+  MesiState_t GetState (Address addr);
 private:
   std::unordered_map<Address, MesiState_t, AddrHash> m_map;
 };

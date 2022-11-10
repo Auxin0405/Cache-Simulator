@@ -16,7 +16,7 @@ public:
   void Read (Address addr, uint32_t index);
 
   void Run (uint32_t core, int opt, Address addr);
-  void PrintState (std::ostream& out, Address addr);
+  void PrintState (std::ostream& out, int opt, Address addr);
 private:
   std::shared_ptr<MainMemory> mem;
   std::vector<Cache> cacheVec;

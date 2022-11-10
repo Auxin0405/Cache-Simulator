@@ -11,9 +11,6 @@ class HexConvert {
 public:
   static std::string Hex2String (uint32_t hex);
   static uint32_t String2Hex (std::string& str);
-
-private:
-  HexConvert () = delete;
 };
 
 #endif

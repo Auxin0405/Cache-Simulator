@@ -1,1 +1,1 @@
-g++ -o cache-simulator main.cc src/*
+g++ -w main.cc src/*

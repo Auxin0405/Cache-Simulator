@@ -1,5 +1,7 @@
 #include "cache.h"
 
+#include <iostream>
+
 Cache::Cache(std::shared_ptr<MainMemory> mem)
   :m_mem (mem)
 {
@@ -45,6 +47,8 @@ Cache::WriteLocal (Address &addr)
   MesiState_t cur = cache[map].second;
   cache[map].second = MesiStateAutomon::TransferState(cur, MesiStateAutomon::WL);
 
+  if (cache[map].second == E)
+    m_mem->WriteBack (addr);
   //  Comes from E to M, we need to Invalid mem.
   if (cache[map].second == M)
     m_mem->Invalid (addr);
@@ -56,6 +60,7 @@ Cache::ReadLocal (Address &addr)
   // If not hit, load it to cache
   if (!CheckAddress(addr))
     Load2Cache (addr);
+  m_mem->WriteBack (addr);
 }
 
 void

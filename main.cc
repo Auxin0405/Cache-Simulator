@@ -13,7 +13,7 @@ uint32_t core_num = 2;
 // 2. Log Out
 int main ()
 {
-  Core core(core_num);x
+  Core core(core_num);
 
   // First, Get the input.
   // Use to get the Trace Input;
@@ -25,23 +25,34 @@ int main ()
   // Set Outstream
   std::ofstream out ("./trace/out");
 
-  // Read and Run
+  out << "Step: \t\tAddress\t\t\tMainMemory\t\t";
+  for (uint32_t i  = 0; i < core_num; i++) {
+    out << "Core: " << i << "Cache\t\t";
+  }
+  out << std::endl;
 
-  for (uint32_t i = 0; i < core_num; i++) {
-    std::string line;
-    // Help ensure the line num
-    uint32_t j = 0;
-    // Get the input line.
-    while (std::getline (input[i], line)) {
-      uint32_t opt, addr;
-      std::stringstream ss(line);
-      if (ss >> opt >> std::hex >> addr) {
-        core.Run(i, opt, Address(addr));
-        core.PrintState (out, addr);
+  // Read and Run
+  // Run something core by core.
+  while (true) {
+    int cnt = 0;
+    for (uint32_t i = 0; i < core_num; i++) {
+      std::string line;
+      // Help ensure the line num
+      uint32_t j = 0;
+      // Get the input line.
+      if (std::getline (input[i], line)) {
+        uint32_t opt, addr;
+        std::stringstream ss(line);
+        if (ss >> opt >> std::hex >> addr) {
+          core.Run(i, opt, Address(addr));
+          core.PrintState (out, opt, addr);
+        }
+      } else {
+        cnt ++;
       }
-      j++;
     }
-    std::cout << j << std::endl;
+    if (cnt == core_num)
+      break;
   }
 
   out.close ();

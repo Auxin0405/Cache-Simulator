@@ -1,0 +1,14 @@
+Step: 		Address			MainMemory		Core: 0Cache		Core: 1Cache		
+	0					17c71H 					S									S										N										
+	1					17c71H 					S									S										S										
+	2					17951H 					S									E										N										
+	3					fc71H 					S									N										E										
+	4					17c71H 					S									S										N										
+	5					17951H 					S									S										S										
+	6					17c21H 					S									S										N										
+	7					fc71H 					S									N										E										
+	8					17951H 					S									E										I										
+	9					fc71H 					I									N										M										
+	10					17951H 					S									E										I										
+	11					17b51H 					S									N										E										
+	12					17b51H 					S									E										I										

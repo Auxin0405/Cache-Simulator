@@ -4,8 +4,8 @@
 #include <string>
 
 typedef enum {
-  S,    // Shared
   I,    // Invalid
+  S,    // Shared
   M,    // Modified
   E     // Exclusive
 } MesiState_t;

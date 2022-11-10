@@ -5,8 +5,8 @@
 // matrix column: WL, RL, WR, RR
 const MesiState_t MesiStateAutomon::stateAutomonMatrix [4][4] = 
 {
-  {E, S, I, S},
   {E, S, I, I},
+  {E, S, I, S},
   {M, M, I, S},
   {M, E, I, S}
 };
@@ -26,12 +26,16 @@ MesiStateAutomon::Mesi2String (MesiState_t state)
   switch (state) {
     case S:
       res = "S";
+      break;
     case I:
       res = "I";
+      break;
     case M:
       res = "M";
+      break;
     case E:
       res = "E";
+      break;
   }
   return res;
 }
